@@ -31,11 +31,9 @@ export const SidebarWorkspaces = () => {
   };
 
   const onCreateWorkspace = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
     e.stopPropagation();
-    e.preventDefault();
-    console.log("create...");
   };
 
   const workspaces = [
@@ -56,9 +54,10 @@ export const SidebarWorkspaces = () => {
         </div>
         {isSidebarOpen && (
           <div className="flex items-center justify-center gap-2">
-            <button onClick={onCreateWorkspace}>
-              <Plus className="h-4 w-4" />
-            </button>
+            <Plus
+              className="h-4 w-4 hover:text-blue-600"
+              onClick={onCreateWorkspace}
+            />
             <ChevronDown
               className={`ml-auto h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
             />
