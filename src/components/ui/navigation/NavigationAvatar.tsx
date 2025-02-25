@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/hooks/context/useAuth";
-import { ChevronDown, LogOut, Settings } from "lucide-react";
+import { ChevronDown, LogOut, Moon, Settings, Sun } from "lucide-react";
 import { useState } from "react";
 
 interface Props {
@@ -52,6 +52,25 @@ export const NavigationAvatar = ({
               >
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
+              </button>
+            </li>
+            <li>
+              <button
+                className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                onClick={() => {
+                  const html = document.documentElement;
+                  const currentTheme = html.classList.contains("dark")
+                    ? "light"
+                    : "dark";
+                  html.classList.remove("light", "dark");
+                  html.classList.add(currentTheme);
+                }}
+              >
+                <Moon className="h-4 w-4 mr-2 dark:hidden" />
+                <Sun className="h-4 w-4 mr-2 hidden dark:block" />
+                {document.documentElement.classList.contains("dark")
+                  ? "Light Mode"
+                  : "Dark Mode"}
               </button>
             </li>
             <li>
