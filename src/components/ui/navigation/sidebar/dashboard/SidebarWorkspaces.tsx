@@ -1,4 +1,10 @@
+import type {
+  IWorkspaceDeleteForm,
+  IWorkspaceForm,
+} from "@/types/form/workspace.form.types";
+import { worksapceFormValues } from "@/helper/static/workspace.static.helper";
 import { useUiContext } from "@/hooks/context/useUi";
+import { ModalEnum } from "@/types/enum/ModalEnum";
 import { Link, useParams } from "@tanstack/react-router";
 import {
   ChevronDown,
@@ -9,9 +15,10 @@ import {
   Trash2,
 } from "lucide-react";
 import { useState } from "react";
+import { WorkspaceLoadTypeEnum } from "@/types/enum/WorkspaceLoadTypeEnum";
 
 export const SidebarWorkspaces = () => {
-  const { isSidebarOpen } = useUiContext();
+  const { isSidebarOpen, openModal } = useUiContext();
   const { entity } = useParams({
     strict: false,
   });
@@ -24,16 +31,46 @@ export const SidebarWorkspaces = () => {
 
   const onEdit = () => {
     setActiveMenu(null);
+
+    const data: IWorkspaceForm = {
+      id: 1,
+      name: "workspace 1",
+      hash: "ASDFGXXFD",
+      loadType: WorkspaceLoadTypeEnum.HASH,
+      period: {
+        from: undefined,
+        to: undefined,
+      },
+    };
+
+    openModal({
+      data,
+      name: ModalEnum.WorkspaceUpdate,
+    });
   };
 
   const onDelete = () => {
     setActiveMenu(null);
+
+    const data: IWorkspaceDeleteForm = {
+      id: 1,
+      name: "workspace 1",
+    };
+
+    openModal({
+      data,
+      name: ModalEnum.WorkspaceDelete,
+    });
   };
 
   const onCreateWorkspace = (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
     e.stopPropagation();
+    openModal({
+      data: worksapceFormValues,
+      name: ModalEnum.WorkspaceCreate,
+    });
   };
 
   const workspaces = [
