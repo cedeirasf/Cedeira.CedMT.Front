@@ -18,7 +18,6 @@ import { Route as AppHomeImport } from './routes/_app/_home'
 import { Route as AppDashboardImport } from './routes/_app/_dashboard'
 import { Route as AppHomeHomeImport } from './routes/_app/_home/home'
 import { Route as AppDashboardDashboardEntityIndexImport } from './routes/_app/_dashboard/dashboard/$entity/index'
-import { Route as AppDashboardDashboardEntityWorkspaceIndexImport } from './routes/_app/_dashboard/dashboard/$entity/workspace/index'
 import { Route as AppDashboardDashboardEntityWorkspaceHashImport } from './routes/_app/_dashboard/dashboard/$entity/workspace/$hash'
 
 // Create/Update Routes
@@ -59,13 +58,6 @@ const AppDashboardDashboardEntityIndexRoute =
   AppDashboardDashboardEntityIndexImport.update({
     id: '/dashboard/$entity/',
     path: '/dashboard/$entity/',
-    getParentRoute: () => AppDashboardRoute,
-  } as any)
-
-const AppDashboardDashboardEntityWorkspaceIndexRoute =
-  AppDashboardDashboardEntityWorkspaceIndexImport.update({
-    id: '/dashboard/$entity/workspace/',
-    path: '/dashboard/$entity/workspace/',
     getParentRoute: () => AppDashboardRoute,
   } as any)
 
@@ -136,13 +128,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardDashboardEntityWorkspaceHashImport
       parentRoute: typeof AppDashboardImport
     }
-    '/_app/_dashboard/dashboard/$entity/workspace/': {
-      id: '/_app/_dashboard/dashboard/$entity/workspace/'
-      path: '/dashboard/$entity/workspace'
-      fullPath: '/dashboard/$entity/workspace'
-      preLoaderRoute: typeof AppDashboardDashboardEntityWorkspaceIndexImport
-      parentRoute: typeof AppDashboardImport
-    }
   }
 }
 
@@ -151,15 +136,12 @@ declare module '@tanstack/react-router' {
 interface AppDashboardRouteChildren {
   AppDashboardDashboardEntityIndexRoute: typeof AppDashboardDashboardEntityIndexRoute
   AppDashboardDashboardEntityWorkspaceHashRoute: typeof AppDashboardDashboardEntityWorkspaceHashRoute
-  AppDashboardDashboardEntityWorkspaceIndexRoute: typeof AppDashboardDashboardEntityWorkspaceIndexRoute
 }
 
 const AppDashboardRouteChildren: AppDashboardRouteChildren = {
   AppDashboardDashboardEntityIndexRoute: AppDashboardDashboardEntityIndexRoute,
   AppDashboardDashboardEntityWorkspaceHashRoute:
     AppDashboardDashboardEntityWorkspaceHashRoute,
-  AppDashboardDashboardEntityWorkspaceIndexRoute:
-    AppDashboardDashboardEntityWorkspaceIndexRoute,
 }
 
 const AppDashboardRouteWithChildren = AppDashboardRoute._addFileChildren(
@@ -205,7 +187,6 @@ export interface FileRoutesByFullPath {
   '/home': typeof AppHomeHomeRoute
   '/dashboard/$entity': typeof AppDashboardDashboardEntityIndexRoute
   '/dashboard/$entity/workspace/$hash': typeof AppDashboardDashboardEntityWorkspaceHashRoute
-  '/dashboard/$entity/workspace': typeof AppDashboardDashboardEntityWorkspaceIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -214,7 +195,6 @@ export interface FileRoutesByTo {
   '/home': typeof AppHomeHomeRoute
   '/dashboard/$entity': typeof AppDashboardDashboardEntityIndexRoute
   '/dashboard/$entity/workspace/$hash': typeof AppDashboardDashboardEntityWorkspaceHashRoute
-  '/dashboard/$entity/workspace': typeof AppDashboardDashboardEntityWorkspaceIndexRoute
 }
 
 export interface FileRoutesById {
@@ -227,7 +207,6 @@ export interface FileRoutesById {
   '/_app/_home/home': typeof AppHomeHomeRoute
   '/_app/_dashboard/dashboard/$entity/': typeof AppDashboardDashboardEntityIndexRoute
   '/_app/_dashboard/dashboard/$entity/workspace/$hash': typeof AppDashboardDashboardEntityWorkspaceHashRoute
-  '/_app/_dashboard/dashboard/$entity/workspace/': typeof AppDashboardDashboardEntityWorkspaceIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -238,7 +217,6 @@ export interface FileRouteTypes {
     | '/home'
     | '/dashboard/$entity'
     | '/dashboard/$entity/workspace/$hash'
-    | '/dashboard/$entity/workspace'
   fileRoutesByTo: FileRoutesByTo
   to:
     | ''
@@ -246,7 +224,6 @@ export interface FileRouteTypes {
     | '/home'
     | '/dashboard/$entity'
     | '/dashboard/$entity/workspace/$hash'
-    | '/dashboard/$entity/workspace'
   id:
     | '__root__'
     | '/_app'
@@ -257,7 +234,6 @@ export interface FileRouteTypes {
     | '/_app/_home/home'
     | '/_app/_dashboard/dashboard/$entity/'
     | '/_app/_dashboard/dashboard/$entity/workspace/$hash'
-    | '/_app/_dashboard/dashboard/$entity/workspace/'
   fileRoutesById: FileRoutesById
 }
 
@@ -303,8 +279,7 @@ export const routeTree = rootRoute
       "parent": "/_app",
       "children": [
         "/_app/_dashboard/dashboard/$entity/",
-        "/_app/_dashboard/dashboard/$entity/workspace/$hash",
-        "/_app/_dashboard/dashboard/$entity/workspace/"
+        "/_app/_dashboard/dashboard/$entity/workspace/$hash"
       ]
     },
     "/_app/_home": {
@@ -328,10 +303,6 @@ export const routeTree = rootRoute
     },
     "/_app/_dashboard/dashboard/$entity/workspace/$hash": {
       "filePath": "_app/_dashboard/dashboard/$entity/workspace/$hash.tsx",
-      "parent": "/_app/_dashboard"
-    },
-    "/_app/_dashboard/dashboard/$entity/workspace/": {
-      "filePath": "_app/_dashboard/dashboard/$entity/workspace/index.tsx",
       "parent": "/_app/_dashboard"
     }
   }

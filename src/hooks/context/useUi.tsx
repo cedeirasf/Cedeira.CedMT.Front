@@ -1,4 +1,4 @@
-import type { UiContextType } from "@/types/context/ui.context.types";
+import type { Modal, UiContextType } from "@/types/context/ui.context.types";
 import React, {
   type ReactNode,
   createContext,
@@ -16,17 +16,33 @@ export const UiProvider: React.FC<ProviderProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(
     localStorage.getItem("sidebar_open") ? true : false
   );
+  const [modal, setModal] = useState<Modal | null>(null);
 
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
     localStorage.setItem("sidebar_open", String(!sidebarOpen));
   };
 
+  const openModal = (modal: Modal) => {
+    setModal(modal);
+  };
+  const closeModal = () => {
+    setModal(null);
+  };
+
+  function getModalData<T>(): T {
+    return modal!.data as T;
+  }
+
   return (
     <Context.Provider
       value={{
+        modal,
         isSidebarOpen: sidebarOpen,
         toggleSidebar,
+        openModal,
+        closeModal,
+        getModalData,
       }}
     >
       {children}
