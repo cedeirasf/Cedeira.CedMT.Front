@@ -10,7 +10,7 @@ export const WorkspaceOverview = ({ expanded }: Props) => {
     <div className="flex flex-col overflow-hidden">
       <WorkspaceOverviewStatCards />
       {expanded && (
-        <div className="grid w-full grid-cols-12 gap-8 mt-8">
+        <div className="grid w-full grid-cols-12 gap-8 mt-6">
           <div className="col-span-12 xl:col-span-4 bg-background rounded-xl">
             <WorkspaceConciliationPieChart />
           </div>

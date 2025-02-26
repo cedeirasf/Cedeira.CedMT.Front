@@ -12,15 +12,16 @@ export const TooltipAnnualDifferentChart = ({
   if (!active || !payload || payload.length === 0) return null;
 
   const data = payload[0].payload;
-  const { conciliados, rechazados, pendientes } = data;
+  const { conciliados, rechazados, pendientes, year } = data;
 
   return (
     <div className="min-w-[300px] rounded border bg-background p-4 gap-4">
+      <label className="text-sm text-muted-foreground mb-2">{`Año: ${year}`}</label>
       <TooltipRowChart
         label="Conciliados"
         value={conciliados}
         bgColor="bg-emerald-500"
-        textColor="text-emerald-500"
+        textColor="text-emerald-300"
       />
       <TooltipRowChart
         label="Rechazados"

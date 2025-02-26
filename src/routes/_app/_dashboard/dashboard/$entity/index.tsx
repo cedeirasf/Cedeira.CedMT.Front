@@ -1,4 +1,4 @@
-import { EntityAnnualDifferenceChart } from "@/components/entity/overview/EntityAnnualDifferenceChart";
+import { EntityAnnualDifferenceChart } from "@/components/entity/chart/EntityAnnualDifferenceChart";
 import { EntityOverviewMovementType } from "@/components/entity/overview/EntityOverviewMovementType";
 import { EntityOverviewStatCards } from "@/components/entity/overview/EntityOverviewStatCards";
 import { createFileRoute } from "@tanstack/react-router";

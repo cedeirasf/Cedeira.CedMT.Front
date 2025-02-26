@@ -20,6 +20,7 @@ const data = [
     rechazados: 2400,
     pendientes: 1200,
     amt: 7600,
+    year: 2025,
   },
   {
     name: "Feb",
@@ -27,6 +28,7 @@ const data = [
     rechazados: 1800,
     pendientes: 800,
     amt: 6100,
+    year: 2025,
   },
   {
     name: "Mar",
@@ -34,6 +36,7 @@ const data = [
     rechazados: 1200,
     pendientes: 1500,
     amt: 7700,
+    year: 2025,
   },
   {
     name: "Abr",
@@ -41,6 +44,7 @@ const data = [
     rechazados: 3100,
     pendientes: 900,
     amt: 6800,
+    year: 2025,
   },
   {
     name: "May",
@@ -48,6 +52,7 @@ const data = [
     rechazados: 1500,
     pendientes: 600,
     amt: 8100,
+    year: 2025,
   },
   {
     name: "Jun",
@@ -55,6 +60,7 @@ const data = [
     rechazados: 2000,
     pendientes: 1000,
     amt: 7200,
+    year: 2025,
   },
   {
     name: "Jul",
@@ -62,6 +68,7 @@ const data = [
     rechazados: 2200,
     pendientes: 1100,
     amt: 7100,
+    year: 2025,
   },
   {
     name: "Ago",
@@ -69,6 +76,7 @@ const data = [
     rechazados: 1900,
     pendientes: 10,
     amt: 7200,
+    year: 2025,
   },
   {
     name: "Sep",
@@ -76,6 +84,7 @@ const data = [
     rechazados: 1600,
     pendientes: 0,
     amt: 7700,
+    year: 2025,
   },
   {
     name: "Oct",
@@ -83,6 +92,7 @@ const data = [
     rechazados: 2100,
     pendientes: 1000,
     amt: 7900,
+    year: 2025,
   },
   {
     name: "Nov",
@@ -90,6 +100,7 @@ const data = [
     rechazados: 1700,
     pendientes: 0,
     amt: 7000,
+    year: 2025,
   },
   {
     name: "Dic",
@@ -97,6 +108,7 @@ const data = [
     rechazados: 1400,
     pendientes: 700,
     amt: 7600,
+    year: 2025,
   },
 ];
 
