@@ -13,4 +13,6 @@ export interface UiContextType {
   closeModal: () => void;
   openModal: (modal: Modal) => void;
   getModalData<T>(): T;
+  toggleMobileSidebar: () => void;
+  changeTheme: () => void;
 }
