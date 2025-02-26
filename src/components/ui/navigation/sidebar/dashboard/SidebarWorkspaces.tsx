@@ -3,6 +3,7 @@ import type {
   IWorkspaceForm,
 } from "@/types/form/workspace.form.types";
 import { useUiContext } from "@/hooks/context/useUi";
+import { ModalEnum } from "@/types/enum/ModalEnum";
 import { Link, useParams } from "@tanstack/react-router";
 import {
   ChevronDown,
@@ -23,7 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModalEnum } from "@/types/enum/ModalEnum";
+import { worksapceFormValues } from "@/helper/static/workspace.static.helper";
 
 interface Props {
   classNameSidebarLabels?: string;
@@ -70,6 +71,10 @@ export const SidebarWorkspaces = ({ classNameSidebarLabels }: Props) => {
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
     e.stopPropagation();
+    openModal({
+      data: worksapceFormValues,
+      name: ModalEnum.WorkspaceCreate,
+    });
   };
 
   const workspaces = [

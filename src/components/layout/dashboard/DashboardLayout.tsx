@@ -1,3 +1,4 @@
+import { HandlerWorkspaceDialog } from "@/components/ui/dialog/workspace/HandlerWorkspaceDialog";
 import { DashboardSidebar } from "@/components/ui/navigation/sidebar/dashboard/DashboardSidebar";
 import { useUiContext } from "@/hooks/context/useUi";
 import { Outlet } from "@tanstack/react-router";
@@ -14,6 +15,7 @@ export const DashboardLayout = () => {
         </button>
         <Outlet />
       </main>
+      <HandlerWorkspaceDialog />
     </div>
   );
 };

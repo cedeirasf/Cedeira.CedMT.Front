@@ -6,13 +6,11 @@ export interface Modal {
 }
 
 export interface UiContextType {
+  modal: Modal | null;
   isSidebarOpen: boolean;
   isMobileSidebarOpen: boolean;
-  modal: Modal | null;
   toggleSidebar: () => void;
   closeModal: () => void;
   openModal: (modal: Modal) => void;
   getModalData<T>(): T;
-  toggleMobileSidebar: () => void;
-  changeTheme: () => void;
 }
