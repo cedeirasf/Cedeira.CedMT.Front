@@ -7,10 +7,13 @@ export const SidebarToggleButton = () => {
   return (
     <button
       onClick={toggleSidebar}
-      className="absolute -right-3 top-20 flex h-6 w-6 items-center justify-center rounded-full border bg-white shadow-sm hover:bg-gray-50"
+      className="absolute -right-3 top-20 h-6 w-6 items-center justify-center rounded-full border hidden lg:block"
     >
       <PanelLeftClose
-        className={cn("h-4 w-4 text-gray-600", isSidebarOpen && "rotate-180")}
+        className={cn(
+          "h-4 w-4 hover:text-accent-foreground",
+          !isSidebarOpen && "rotate-180"
+        )}
       />
     </button>
   );
