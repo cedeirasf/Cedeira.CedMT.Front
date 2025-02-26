@@ -42,7 +42,7 @@ export const DashboardSidebar = () => {
           <SidebarWorkspaces classNameSidebarLabels={classNameSidebarLabels} />
         </nav>
         <div className="border-t p-4">
-          <NavAvatar />
+          <NavAvatar displayChangeTheme />
         </div>
         <SidebarToggleButton />
       </aside>
@@ -81,7 +81,7 @@ const SidebarHeader = ({
   return (
     <Link to="/home">
       <div className="flex h-14 items-center justify-between border-b px-4">
-        <span className="font-semibold">LOGO</span>
+        <span className="font-semibold">CedMT</span>
         <XIcon
           className="h-5 w-5 cursor-pointer hover:text-accent-foreground lg:hidden"
           onClick={onClick}

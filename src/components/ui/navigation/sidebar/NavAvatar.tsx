@@ -9,13 +9,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/hooks/context/useAuth";
-import { ChevronsUpDown, LogOut, Moon, Sun } from "lucide-react";
+import { ChevronsUpDown, LogOut } from "lucide-react";
 import { Button } from "mtch-ui";
-import { useUiContext } from "@/hooks/context/useUi";
+import { ToggleTheme } from "../ToggleTheme";
 
-export const NavAvatar = () => {
+interface Props {
+  displayChangeTheme?: boolean;
+}
+
+export const NavAvatar = ({ displayChangeTheme = false }: Props) => {
   const context = useAuthContext();
-  const { changeTheme } = useUiContext();
 
   const user = context.user!;
 
@@ -26,7 +29,7 @@ export const NavAvatar = () => {
           variant="ghost"
           className="w-full justify-start p-0 mr-4 flex gap-2"
         >
-          <Avatar className="gap-4 h-8 w-8 rounded-lg">
+          <Avatar className="gap-4 size-8 rounded-lg ">
             <AvatarImage src={user.avatar ?? undefined} alt={user.username} />
             <AvatarFallback className="rounded-lg">CN</AvatarFallback>
           </Avatar>
@@ -45,7 +48,7 @@ export const NavAvatar = () => {
       >
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="h-8 w-8 rounded-lg">
+            <Avatar className="size-8 rounded-lg">
               <AvatarImage src={user.avatar ?? undefined} alt={user.username} />
               <AvatarFallback className="rounded-lg">CN</AvatarFallback>
             </Avatar>
@@ -57,13 +60,11 @@ export const NavAvatar = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={changeTheme} className="cursor-pointer">
-            <Moon className="size-4  dark:hidden" />
-            <Sun className="size-4 hidden dark:block" />
-            {document.documentElement.classList.contains("dark")
-              ? "Light Mode"
-              : "Dark Mode"}
-          </DropdownMenuItem>
+          {displayChangeTheme && (
+            <DropdownMenuItem className="cursor-pointer">
+              <ToggleTheme displayText />
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer" onClick={context.logout}>
